@@ -10,5 +10,5 @@
         postrotate
                 s6-svc -h /var/run/s6/services/nginx
         endscript
-        su www-data www-data
+        su app app
 }
