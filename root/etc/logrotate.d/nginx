@@ -1,4 +1,4 @@
-/config/log/nginx/*.log {
+/var/log/nginx/*.log {
         weekly
         rotate 14
         compress
@@ -10,5 +10,5 @@
         postrotate
                 s6-svc -h /var/run/s6/services/nginx
         endscript
-        su gamestream gamestream
+        su www-data www-data
 }

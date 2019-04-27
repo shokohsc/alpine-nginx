@@ -1,4 +1,4 @@
-FROM base:alpine-3.8
+FROM shokohsc/alpine-s6
 
 # install packages
 RUN \
@@ -20,5 +20,5 @@ RUN \
 COPY root/ /
 
 # ports and volumes
-EXPOSE 80 443
-VOLUME /config
+EXPOSE 80
+VOLUME /var/www
