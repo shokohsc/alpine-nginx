@@ -22,12 +22,13 @@ if ping -c 1 -W 1 169.254.169.250; then
 fi
 
 # permissions
+find /var -type d -not -path /var/www/symfony/public  -prune -o -print0 | xargs -0 chown app:app
 chown -R app:app \
 	/etc/nginx \
-    /var \
 	/var/lib/nginx \
 	/var/tmp/nginx
+
 chmod -R g+w \
-    /var/www \
-    /etc/nginx
+    /etc/nginx \
+
 chmod -R 644 /etc/logrotate.d
