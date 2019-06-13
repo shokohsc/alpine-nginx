@@ -1,8 +1,9 @@
-FROM shokohsc/alpine-s6
+FROM shokohsc/alpine-s6:3.9
 
 # install packages
 RUN \
  echo "**** install build packages ****" && \
+ apk update && \
  apk add --no-cache \
 	apache2-utils \
 	libressl2.7-libssl \
