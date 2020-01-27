@@ -1,4 +1,5 @@
-FROM shokohsc/alpine-s6:3.9
+ARG FROM_TAG='latest'
+FROM shokohsc/alpine-s6:${FROM_TAG:-latest}
 
 # install packages
 RUN \
@@ -6,10 +7,8 @@ RUN \
  apk update && \
  apk add --no-cache \
 	apache2-utils \
-	libressl2.7-libssl \
 	logrotate \
-	nginx \
-	openssl && \
+	nginx && \
  echo "**** configure nginx ****" && \
  echo 'fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;' >> \
 	/etc/nginx/fastcgi_params && \
@@ -22,4 +21,3 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 80
-VOLUME /var/www
